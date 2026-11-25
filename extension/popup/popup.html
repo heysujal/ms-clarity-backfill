@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Clarity Data Capture</title>
+  <link rel="stylesheet" href="../ui/style.css" />
+  <style>
+    body { width: 380px; }
+    header { padding: 14px 16px 12px; border-bottom: 1px solid var(--border); }
+    .settings { display: flex; gap: 16px; margin-top: 10px; }
+    main { padding: 12px 16px; }
+    .view { padding: 10px 0; border-bottom: 1px solid var(--border); }
+    .view:last-child { border-bottom: 0; }
+    .view h2 { font-size: 14px; }
+    footer { display: flex; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--border); background: var(--bg-2); }
+    footer button.primary { flex: 1; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="row">
+      <span class="dot" id="dot"></span>
+      <h1>Clarity Capture</h1>
+      <span class="spacer"></span>
+      <button class="ghost sm" id="openViewer">Full view ↗</button>
+    </div>
+    <div class="settings">
+      <label class="toggle"><input type="checkbox" id="enabled" /> Capture</label>
+      <label class="toggle"><input type="checkbox" id="showPanel" /> Panel on Clarity</label>
+    </div>
+  </header>
+  <main id="views"></main>
+  <footer>
+    <button id="copyAll">Copy all</button>
+    <button class="primary" id="downloadAll">Download all JSON</button>
+    <button class="ghost danger" id="clear" title="Delete captured data">Clear</button>
+  </footer>
+  <div class="toast" id="toast" role="status"></div>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

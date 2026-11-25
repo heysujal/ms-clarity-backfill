@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Clarity Data Capture (unofficial)",
+  "version": "0.2.0",
+  "description": "Saves the data your Microsoft Clarity dashboard already loads and lets you copy or download it as clean JSON. Makes no extra requests.",
+  "permissions": ["storage", "unlimitedStorage", "downloads"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://clarity.microsoft.com/*"],
+      "js": ["content/hook.js"],
+      "run_at": "document_start",
+      "world": "MAIN",
+      "all_frames": true
+    },
+    {
+      "matches": ["https://clarity.microsoft.com/*"],
+      "js": ["content/bridge.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": ["https://clarity.microsoft.com/*"],
+      "js": ["content/panel.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["fonts/Geist-Variable.woff2", "fonts/GeistMono-Variable.woff2"],
+      "matches": ["https://clarity.microsoft.com/*"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Clarity Data Capture"
+  }
+}

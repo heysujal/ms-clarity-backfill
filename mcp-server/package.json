@@ -1,0 +1,22 @@
+{
+  "name": "clarity-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MCP server for Microsoft Clarity: reads JSON exported by the Clarity Data Capture extension, plus optional live queries via your own session.",
+  "type": "module",
+  "engines": {
+    "node": ">=23.6"
+  },
+  "scripts": {
+    "start": "node src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.10",
+    "typescript": "^7.0.2"
+  }
+}

@@ -1,0 +1,14 @@
+# Secrets
+.env
+.env.*
+!.env.example
+.clarity-session
+
+# Personal analytics data
+*.har
+clarity_*.json
+clarity-exports/
+
+# Tooling
+node_modules/
+.DS_Store

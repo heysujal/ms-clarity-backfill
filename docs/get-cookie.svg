@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="t d">
+  <title id="t">Where to find the cookie and csrf-token in Chrome DevTools (illustration, fake values)</title>
+  <desc id="d">Chrome DevTools, Network tab, filtered by api/v2. A v2 request is selected and the Headers tab shows Request Headers. The cookie and csrf-token rows are highlighted: right-click each value, choose Copy value, and paste it into .env as CLARITY_COOKIE and CLARITY_CSRF_TOKEN.</desc>
+  <style>
+    text { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #303030; font-size: 13px; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; }
+    .muted { fill: #8f8f8f; }
+    .hdr { font-weight: 600; fill: #5f6368; }
+    .val { fill: #1a1a1a; }
+    .callout { font-size: 15px; font-weight: 600; fill: #171717; }
+    .callsub { font-size: 14px; fill: #4d4d4d; }
+    .callnum { font-size: 13px; font-weight: 700; fill: #ffffff; }
+  </style>
+  <rect x="0.5" y="0.5" width="1199" height="639" rx="16" fill="#ffffff" stroke="#ebebeb"/>
+
+  <!-- devtools window -->
+  <rect x="24" y="24" width="760" height="592" rx="8" fill="#ffffff" stroke="#cfcfcf"/>
+  <rect x="24" y="24" width="760" height="34" rx="8" fill="#f1f3f4"/>
+  <rect x="24" y="50" width="760" height="8" fill="#f1f3f4"/>
+  <g>
+    <text x="44" y="46" class="muted">Elements</text>
+    <text x="118" y="46" class="muted">Console</text>
+    <text x="186" y="46" class="muted">Sources</text>
+    <text x="252" y="46" style="fill:#1a73e8;font-weight:600">Network</text>
+    <rect x="248" y="54" width="60" height="3" fill="#1a73e8"/>
+    <text x="324" y="46" class="muted">Application</text>
+  </g>
+  <line x1="24" y1="58" x2="784" y2="58" stroke="#cfcfcf"/>
+
+  <!-- filter bar -->
+  <rect x="36" y="68" width="210" height="26" rx="4" fill="#ffffff" stroke="#1a73e8" stroke-width="1.5"/>
+  <text x="46" y="86" class="mono val">api/v2</text>
+  <text x="262" y="86" class="muted">All</text>
+  <rect x="290" y="70" width="70" height="22" rx="11" fill="#e8f0fe"/>
+  <text x="300" y="86" style="fill:#1a73e8">Fetch/XHR</text>
+  <line x1="24" y1="104" x2="784" y2="104" stroke="#e0e0e0"/>
+
+  <!-- request list -->
+  <rect x="24" y="104" width="190" height="512" fill="#fafafa"/>
+  <line x1="214" y1="104" x2="214" y2="616" stroke="#e0e0e0"/>
+  <text x="36" y="124" class="hdr">Name</text>
+  <line x1="24" y1="132" x2="214" y2="132" stroke="#e0e0e0"/>
+  <g class="mono">
+    <text x="36" y="152">v2</text>
+    <rect x="24" y="160" width="190" height="26" fill="#d2e3fc"/>
+    <text x="36" y="178" style="font-weight:600">v2</text>
+    <text x="36" y="204">v2</text>
+    <text x="36" y="230">v2</text>
+    <text x="36" y="256">v2</text>
+    <text x="36" y="282">v2</text>
+  </g>
+
+  <!-- headers pane -->
+  <g>
+    <text x="230" y="124" style="font-weight:600;fill:#1a73e8">Headers</text>
+    <rect x="226" y="129" width="60" height="3" fill="#1a73e8"/>
+    <text x="304" y="124" class="muted">Payload</text>
+    <text x="370" y="124" class="muted">Preview</text>
+    <text x="438" y="124" class="muted">Response</text>
+  </g>
+  <line x1="214" y1="132" x2="784" y2="132" stroke="#e0e0e0"/>
+  <text x="230" y="158" class="hdr">▸ General</text>
+  <text x="230" y="186" class="hdr">▸ Response Headers</text>
+  <text x="230" y="214" class="hdr">▾ Request Headers</text>
+
+  <g class="mono">
+    <text x="246" y="242" class="hdr">accept</text><text x="420" y="242" class="val">*/*</text>
+    <text x="246" y="266" class="hdr">content-type</text><text x="420" y="266" class="val">application/json</text>
+
+    <rect x="232" y="276" width="540" height="48" rx="4" fill="#fff4d6" stroke="#f5b800" stroke-width="1.5"/>
+    <text x="246" y="296" class="hdr">cookie</text>
+    <text x="420" y="296" class="val">MUID=0A1B2C3D…; _clck=example…;</text>
+    <text x="420" y="314" class="val">.AspNet.Cookies=EXAMPLE-ONLY-xxxx…</text>
+
+    <rect x="232" y="332" width="540" height="28" rx="4" fill="#fff4d6" stroke="#f5b800" stroke-width="1.5"/>
+    <text x="246" y="351" class="hdr">csrf-token</text>
+    <text x="420" y="351" class="val">aBcD1234-EXAMPLE-efGh</text>
+
+    <text x="246" y="384" class="hdr">origin</text><text x="420" y="384" class="val">https://clarity.microsoft.com</text>
+    <text x="246" y="408" class="hdr">referer</text><text x="420" y="408" class="val">https://clarity.microsoft.com/projects/…</text>
+    <text x="246" y="432" class="hdr">x-clarity-version</text><text x="420" y="432" class="val">12345678</text>
+  </g>
+
+  <!-- context menu -->
+  <rect x="560" y="440" width="190" height="104" rx="6" fill="#ffffff" stroke="#cfcfcf"/>
+  <text x="576" y="466" class="muted">Copy header</text>
+  <rect x="566" y="476" width="178" height="26" rx="4" fill="#1a73e8"/>
+  <text x="576" y="494" style="fill:#ffffff">Copy value</text>
+  <text x="576" y="526" class="muted">Copy as cURL</text>
+  <path d="M700 324 Q720 380 680 438" fill="none" stroke="#8f8f8f" stroke-width="1.2" stroke-dasharray="4 4"/>
+
+  <!-- callouts -->
+  <g>
+    <circle cx="820" cy="84" r="12" fill="#006bff"/><text class="callnum" x="820" y="89" text-anchor="middle">1</text>
+    <text class="callout" x="842" y="80">Network tab, filter api/v2</text>
+    <text class="callsub" x="842" y="100">Reload the dashboard if the list is empty.</text>
+  </g>
+  <g>
+    <circle cx="820" cy="172" r="12" fill="#006bff"/><text class="callnum" x="820" y="177" text-anchor="middle">2</text>
+    <text class="callout" x="842" y="168">Click any "v2" request</text>
+    <text class="callsub" x="842" y="188">Headers → scroll to Request Headers.</text>
+  </g>
+  <g>
+    <line x1="772" y1="300" x2="806" y2="300" stroke="#006bff" stroke-width="1.5"/>
+    <circle cx="820" cy="300" r="12" fill="#006bff"/><text class="callnum" x="820" y="305" text-anchor="middle">3</text>
+    <text class="callout" x="842" y="296">cookie → Copy value</text>
+    <text class="callsub" x="842" y="316">.env:  CLARITY_COOKIE='…'</text>
+  </g>
+  <g>
+    <line x1="772" y1="346" x2="806" y2="372" stroke="#006bff" stroke-width="1.5"/>
+    <circle cx="820" cy="376" r="12" fill="#006bff"/><text class="callnum" x="820" y="381" text-anchor="middle">4</text>
+    <text class="callout" x="842" y="372">csrf-token → Copy value</text>
+    <text class="callsub" x="842" y="392">.env:  CLARITY_CSRF_TOKEN='…'</text>
+  </g>
+  <g>
+    <rect x="808" y="440" width="368" height="116" rx="10" fill="#fff8eb" stroke="#e8c27a"/>
+    <text x="828" y="470" style="font-size:14px;font-weight:700;fill:#8a5a00">Do this in the SECOND account's profile</text>
+    <text x="828" y="494" class="callsub">The cookie is a login. Keep it in .env only:</text>
+    <text x="828" y="514" class="callsub">never in git, chats, issues or screenshots.</text>
+    <text x="828" y="538" class="callsub">Wrap both values in single quotes.</text>
+  </g>
+  <text x="1176" y="624" style="font-size:12px" class="muted" text-anchor="end">Illustration with fake values</text>
+</svg>

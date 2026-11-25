@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Clarity Data Capture</title>
+  <link rel="stylesheet" href="../ui/style.css" />
+  <style>
+    body { background: var(--bg-2); }
+    header {
+      position: sticky; top: 0; z-index: 2;
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: saturate(180%) blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 14px 16px; }
+    main.wrap { padding-top: 18px; }
+    .project + .project { margin-top: 28px; }
+    .project > h2 { margin-bottom: 10px; }
+    .view + .view { margin-top: 12px; }
+    .lists { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .lists td:first-child { max-width: 240px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .compact { padding: 10px 14px; }
+    .compact + .compact { margin-top: 6px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap row wrap">
+      <span class="dot on"></span>
+      <h1>Clarity Capture</h1>
+      <span class="chip" id="count"></span>
+      <span class="spacer"></span>
+      <label class="toggle" title="Include the raw heatmap click/scroll payloads (large)"><input type="checkbox" id="heatmaps" /> Heatmap payloads</label>
+      <label class="toggle" title="Also include every captured response unmodified"><input type="checkbox" id="raw" /> Raw responses</label>
+      <button id="copyAll">Copy all</button>
+      <button class="primary" id="downloadAll">Download all JSON</button>
+      <button class="ghost danger" id="clear">Clear</button>
+    </div>
+  </header>
+  <main class="wrap" id="main"></main>
+  <div class="toast" id="toast"></div>
+  <script type="module" src="viewer.js"></script>
+</body>
+</html>

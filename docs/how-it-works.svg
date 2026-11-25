@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-labelledby="t d">
+  <title id="t">How ms-clarity-backfill works</title>
+  <desc id="d">Main path: the Clarity dashboard in a second account's Chrome profile loads data; the extension copies those responses; you copy or download JSON; the MCP server reads the JSON and Claude answers questions. Optional live mode: the MCP server uses the second account's cookie and CSRF token from .env to query Clarity's internal API at most once per second.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#8f8f8f"/>
+    </marker>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#c27803"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #171717; }
+    .h { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; }
+    .k { font-size: 12px; font-weight: 600; fill: #8f8f8f; letter-spacing: 0.6px; }
+    .t { font-size: 17px; font-weight: 650; }
+    .s { font-size: 14px; fill: #4d4d4d; }
+    .m { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; fill: #4d4d4d; }
+    .warn { fill: #8a5a00; }
+    .n { font-size: 13px; font-weight: 700; fill: #ffffff; }
+  </style>
+  <rect x="0.5" y="0.5" width="1199" height="559" rx="16" fill="#ffffff" stroke="#ebebeb"/>
+  <text class="h" x="40" y="56">How it works</text>
+  <text class="k" x="40" y="96">MAIN PATH · NO EXTRA REQUESTS</text>
+
+  <!-- step boxes -->
+  <g>
+    <rect x="40" y="116" width="250" height="150" rx="12" fill="#fafafa" stroke="#d4d4d4"/>
+    <circle cx="66" cy="142" r="12" fill="#171717"/><text class="n" x="66" y="147" text-anchor="middle">1</text>
+    <text class="t" x="88" y="148">Clarity dashboard</text>
+    <text class="s" x="60" y="182">Open it in the second</text>
+    <text class="s" x="60" y="202">account's Chrome profile</text>
+    <text class="s" x="60" y="222">and pick any date range.</text>
+  </g>
+  <g>
+    <rect x="340" y="116" width="250" height="150" rx="12" fill="#fafafa" stroke="#d4d4d4"/>
+    <circle cx="366" cy="142" r="12" fill="#171717"/><text class="n" x="366" y="147" text-anchor="middle">2</text>
+    <text class="t" x="388" y="148">Chrome extension</text>
+    <text class="s" x="360" y="182">Copies the responses Clarity</text>
+    <text class="s" x="360" y="202">already loads. Stores them</text>
+    <text class="s" x="360" y="222">in your browser only.</text>
+  </g>
+  <g>
+    <rect x="640" y="116" width="250" height="150" rx="12" fill="#fafafa" stroke="#d4d4d4"/>
+    <circle cx="666" cy="142" r="12" fill="#171717"/><text class="n" x="666" y="147" text-anchor="middle">3</text>
+    <text class="t" x="688" y="148">JSON export</text>
+    <text class="s" x="660" y="182">Copy it, or download to</text>
+    <text class="m" x="660" y="204">Downloads/</text>
+    <text class="m" x="660" y="222">clarity-exports/</text>
+  </g>
+  <g>
+    <rect x="940" y="116" width="220" height="150" rx="12" fill="#171717"/>
+    <circle cx="966" cy="142" r="12" fill="#ffffff"/><text x="966" y="147" text-anchor="middle" style="font-size:13px;font-weight:700;fill:#171717">4</text>
+    <text class="t" x="988" y="148" style="fill:#ffffff">MCP server</text>
+    <text class="s" x="960" y="182" style="fill:#d4d4d4">Reads the JSON offline.</text>
+    <text class="s" x="960" y="202" style="fill:#d4d4d4">Claude answers questions</text>
+    <text class="s" x="960" y="222" style="fill:#d4d4d4">about your full history.</text>
+  </g>
+  <line x1="292" y1="191" x2="336" y2="191" stroke="#8f8f8f" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="592" y1="191" x2="636" y2="191" stroke="#8f8f8f" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="892" y1="191" x2="936" y2="191" stroke="#8f8f8f" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- optional live mode -->
+  <rect x="24" y="318" width="1152" height="218" rx="14" fill="none" stroke="#e8c27a" stroke-dasharray="6 6"/>
+  <text class="k" x="40" y="348" style="fill:#c27803">OPTIONAL · LIVE MODE · UNOFFICIAL</text>
+  <text class="s" x="40" y="382">The MCP server can also ask Clarity directly,</text>
+  <text class="s" x="40" y="402">for any date range, without clicking around.</text>
+  <text class="s" x="40" y="432">Uses the second account's login session,</text>
+  <text class="s" x="40" y="452">never your main account.</text>
+
+  <g>
+    <rect x="640" y="380" width="250" height="120" rx="12" fill="#fff8eb" stroke="#e8c27a"/>
+    <text class="t" x="660" y="412">.env (second account)</text>
+    <text class="m" x="660" y="442">CLARITY_COOKIE='…'</text>
+    <text class="m" x="660" y="464">CLARITY_CSRF_TOKEN='…'</text>
+  </g>
+  <g>
+    <rect x="940" y="380" width="220" height="120" rx="12" fill="#fff8eb" stroke="#e8c27a"/>
+    <text class="t" x="960" y="412">Clarity internal API</text>
+    <text class="s warn" x="960" y="440">≤ 1 request / second</text>
+    <text class="s warn" x="960" y="462">past days cached on disk</text>
+  </g>
+  <path d="M 820 378 C 850 330, 900 320, 960 270" fill="none" stroke="#c27803" stroke-width="2" stroke-dasharray="5 5" marker-end="url(#b)"/>
+  <line x1="1050" y1="270" x2="1050" y2="376" stroke="#c27803" stroke-width="2" stroke-dasharray="5 5" marker-end="url(#b)" marker-start="url(#b)"/>
+</svg>
